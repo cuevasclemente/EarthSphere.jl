@@ -43,7 +43,7 @@ function Earth_LatLong_Coord(latitude::Real,longitude::Real)
 	if sign(longitude) == 1
 		azimuth = "E"
 	elseif sign(longitude) == -1
-		azimuth = "E"
+		azimuth = "W"
 	else
 		azimuth = ""
 	end
