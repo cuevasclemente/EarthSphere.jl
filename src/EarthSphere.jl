@@ -1,6 +1,5 @@
 """This collection of methods and definitions allow for easy location determination and comparison between differnt points on any sphere defined by their latitude and longitude."""
 module EarthSphere
-using Debug
 abstract Coordinate
 #A coordinate describes a point in any coordinate system. 
 
@@ -34,20 +33,21 @@ export Earth_LatLong_Coord
 
 Earth_LatLong_Coord(latitude::Real,longitude::Real,bearing::String) = Sphere_LatLong_Coord(latitude,longitude,bearing,6371)
 function Earth_LatLong_Coord(latitude::Real,longitude::Real)
-	bearing = ""
 	if sign(latitude) == 1
-		bearing[1] = 'N'
-	end
-	if sign(latitude) == -1
-		bearing[1] = 'S'
+		inclination = "N"
+	elseif sign(latitude) == -1
+		inclination = "S"
+	else
+		inclination = ""
 	end
 	if sign(longitude) == 1
-		bearing[2] = 'E'
+		azimuth = "E"
+	elseif sign(longitude) == -1
+		azimuth = "E"
+	else
+		azimuth = ""
 	end
-	if sign(latitude) == -1
-		bearing[2] = 'W'
-	end
-	my_sphere = Sphere_LatLong_Coord(latitude,longitude,bearing,6371)
+	my_sphere = Sphere_LatLong_Coord(abs(latitude),abs(longitude),inclination*azimuth,6371)
 	return my_sphere
 end
 
