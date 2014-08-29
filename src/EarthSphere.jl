@@ -113,6 +113,19 @@ function convert(Spherical_Coord,latlong::LatLong_Coord)
 	return Spherical_Coord(latlong.radius,theta,phi)
 end
 export convert
+function latlongtotuple(Tuple,s::Sphere_LatLong_Coord)
+	#Takes a Spherical Coordinate and returns the signed latitude and longitude
+	first = s.phi
+	second = s.theta
+	if ismatch(r"S",s.bearing)
+		first = (-1)*first
+	end
+	if ismatch(r"W",s.bearing)
+		second = (-1)*second
+	end
+	return (first,second)
+end
+
 
 function to_radians(degree::Real)
 	"Takes a degree, returns radians"
