@@ -24,6 +24,7 @@ type Sphere_LatLong_Coord <: LatLong_Coord
 	bearing::String
 	radius # 6371000 Meters for earth
 end
+export Sphere_LatLong_Coord
 function Earth_LatLong_Coord(latitude::Degree,longitude::Degree,bearing::String)
 	latnumber = degree_to_decimal_degree(latitude)
 	longnumber = degree_to_decimal_degree(longitude)
