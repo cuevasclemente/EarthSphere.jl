@@ -113,7 +113,7 @@ function convert(Spherical_Coord,latlong::LatLong_Coord)
 	return Spherical_Coord(latlong.radius,theta,phi)
 end
 export convert
-function latlongtotuple(Tuple,s::Sphere_LatLong_Coord)
+function latlongtotuple(s::Sphere_LatLong_Coord)
 	#Takes a Spherical Coordinate and returns the signed latitude and longitude
 	first = s.phi
 	second = s.theta
@@ -126,7 +126,7 @@ function latlongtotuple(Tuple,s::Sphere_LatLong_Coord)
 	return (first,second)
 end
 tuple(s::Sphere_LatLong_Coord) = latlongtotuple(s)
-
+tuple(latlong::LatLong_Coord) = latlongtotuple(convert(Spherical_Coord,latlong)
 
 
 function to_radians(degree::Real)
