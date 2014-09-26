@@ -125,7 +125,7 @@ function latlongtotuple(Tuple,s::Sphere_LatLong_Coord)
 	end
 	return (first,second)
 end
-function tuple(s::Sphere_LatLong_Coord) = latlongtotuple(s)
+tuple(s::Sphere_LatLong_Coord) = latlongtotuple(s)
 
 
 
