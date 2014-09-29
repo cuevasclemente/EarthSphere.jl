@@ -115,8 +115,8 @@ end
 export convert
 function latlongtotuple(s::Sphere_LatLong_Coord)
 	#Takes a Spherical Coordinate and returns the signed latitude and longitude
-	first = s.phi
-	second = s.theta
+	first = s.longitude
+	second = s.latitude
 	if ismatch(r"S",s.bearing)
 		first = (-1)*first
 	end
