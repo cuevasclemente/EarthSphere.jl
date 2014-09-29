@@ -125,9 +125,6 @@ function latlongtotuple(s::Sphere_LatLong_Coord)
 	end
 	return (first,second)
 end
-#=tuple(s::Sphere_LatLong_Coord) = latlongtotuple(s)=#
-#=tuple(latlong::LatLong_Coord) = latlongtotuple(convert(Spherical_Coord,latlong))=#
-export tuple
 
 function to_radians(degree::Real)
 	"Takes a degree, returns radians"
