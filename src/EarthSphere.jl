@@ -113,7 +113,7 @@ function convert(Spherical_Coord,latlong::LatLong_Coord)
 	return Spherical_Coord(latlong.radius,theta,phi)
 end
 export convert
-function latlongtotuple(s::Sphere_LatLong_Coord)
+function tuple(s::Sphere_LatLong_Coord)
 	#Takes a Spherical Coordinate and returns the signed latitude and longitude
 	first = s.longitude
 	second = s.latitude
