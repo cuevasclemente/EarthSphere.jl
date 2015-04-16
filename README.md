@@ -13,3 +13,7 @@ yourlocation = Earth_LatLong_Coord(65,10,"NE")
 #You are located on Earth, latitude 65 degrees north, longitude 10 degrees east
 
 distance = get_distance(mylocation,yourlocation)
+
+# TODO:
+- Refactor API, make names cleaner and clearer
+- Allow choice of algorithm
