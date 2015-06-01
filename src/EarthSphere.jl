@@ -9,20 +9,20 @@ abstract LatLong_Coord <: Coordinate
 
 type Degree
 	#Abstraction for dealing with sexagesimal units of subtending the circle
-	degree::Real
-	minute::Real
-	second::Real
+	degree::Float64
+	minute::Float64
+	second::Float64
 end
 export Degree
 
 
 type Sphere_LatLong_Coord <: LatLong_Coord
 	#Deals with a spherical latlong coordinate, similar to that used on good old planet earth
-	latitude
-	longitude
+	latitude::Float64
+	longitude::Float64
 	#Example bearing: SW, NE
 	bearing::String
-	radius # 6371000 Meters for earth
+	radius::Float64 # 6371000 Meters for earth
 end
 function Earth_LatLong_Coord(latitude::Degree,longitude::Degree,bearing::String)
 	latnumber = degree_to_decimal_degree(latitude)
@@ -31,8 +31,8 @@ function Earth_LatLong_Coord(latitude::Degree,longitude::Degree,bearing::String)
 end
 export Earth_LatLong_Coord
 
-Earth_LatLong_Coord(latitude::Real,longitude::Real,bearing::String) = Sphere_LatLong_Coord(latitude,longitude,bearing,6371)
-function Earth_LatLong_Coord(latitude::Real,longitude::Real)
+Earth_LatLong_Coord(latitude::Float64,longitude::Float64,bearing::Float64) = Sphere_LatLong_Coord(latitude,longitude,bearing,6371)
+function Earth_LatLong_Coord(latitude::Float64,longitude::Float64)
 	if sign(latitude) == 1
 		inclination = "N"
 	elseif sign(latitude) == -1
@@ -56,13 +56,13 @@ end
 
 type Spherical_Coord <: Coordinate
 	#Mathematical formulation for a 3D spherical coordinate system
-	radius::Real
-	theta::Real
-	phi::Real
+	radius::Float64
+	theta::Float64
+	phi::Float64
 end
 export Spherical_Coord
 
-function sign_lat_long(latitudeangle,longitudeangle,bearing)
+function sign_lat_long(latitudeangle::Float64,longitudeangle::Float64,bearing::String)
 	"""Returns a signed version of latitude and longitude based on the bearing given,
 	uses a coordinate system where east is positive, west is negative, north is positive
 	south is negative."""
